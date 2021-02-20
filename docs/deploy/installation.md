@@ -9,9 +9,10 @@
 
 ## IAM Permissions
 
-#### Setup IAM role for service accounts
 The controller runs on the worker nodes, so it needs access to the AWS ALB/NLB resources via IAM permissions. 
 The IAM permissions can either be setup via IAM roles for ServiceAccount or can be attached directly to the worker node IAM roles.
+
+#### Setup IAM role for service accounts
 
 1. Create IAM OIDC provider
     ```
@@ -44,11 +45,13 @@ The IAM permissions can either be setup via IAM roles for ServiceAccount or can 
     --override-existing-serviceaccounts \
     --approve
     ```
-Setup IAM manually
+#### Setup IAM manually
+
 If not setting up IAM for ServiceAccount, apply the IAM policies from the following URL at minimum.
 ```
 curl -o iam-policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.1.3/docs/install/iam_policy.json
 ```
+
 ## Add Controller to Cluster
 
 !!!note "Use Fargate"
